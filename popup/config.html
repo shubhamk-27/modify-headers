@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Modify Headers</title>
+        <link rel="stylesheet" href="bootstrap.min.css" />
+        <link rel="stylesheet" href="config.css" />
+        <style>
+            body {
+                background-color: #f8f9fa;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .container {
+                margin-top: 40px;
+            }
+            .title {
+                font-weight: bold;
+                font-size: 24px;
+                color: #343a40;
+            }
+            .standard_table {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .form_control,
+            .input_url {
+                width: 100%;
+                padding: 6px;
+                border-radius: 4px;
+                border: 1px solid #ced4da;
+            }
+            .btn {
+                margin-left: 5px;
+            }
+            th {
+                background-color: #e9ecef;
+                text-align: center;
+            }
+            td {
+                vertical-align: middle;
+            }
+            .table-condensed th,
+            .table-condensed td {
+                padding: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="main_screen">
+                <table class="standard_table">
+                    <tr>
+                        <td style="text-align: left"><h2 class="title">MODIFY HEADERS</h2></td>
+                        <td style="text-align: right">
+                            <img
+                                id="start_img"
+                                src="img/start.png"
+                                alt="start/stop"
+                                style="height: 40px; cursor: pointer" />
+                        </td>
+                    </tr>
+                </table>
+
+                <table class="standard_table">
+                    <tr>
+                        <td style="text-align: left">
+                            <strong>Url Patterns* :</strong>
+                            <input id="targetPage" class="form_control input_url" type="text" value="" />
+                        </td>
+                        <td style="text-align: right">
+                            <button type="button" id="export_button" class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-export"></span> Export
+                            </button>
+                            <button type="button" id="import_button" class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-import"></span> Import
+                            </button>
+                            <button type="button" id="append_button" class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-import"></span> Append
+                            </button>
+                            <button type="button" id="parameters_button" class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-cog"></span> Parameters
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+
+                <table id="table_config" class="table table-bordered table-condensed standard_table">
+                    <thead>
+                        <tr id="config_table_head">
+                            <th>When URL contains</th>
+                            <th>Action</th>
+                            <th>Header Field Name</th>
+                            <th>Header Field Value</th>
+                            <th>Comment</th>
+                            <th>Apply on</th>
+                            <th>Status</th>
+                            <th id="export_row_header" style="text-decoration: underline">Export</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="config_tab"></tbody>
+                </table>
+
+                <div class="text-center">
+                    <button type="button" id="add_button" class="btn btn-success btn-sm" style="width: 120px">
+                        <span class="glyphicon glyphicon-plus"></span> New line
+                    </button>
+                    <button type="button" id="save_button" class="btn btn-info btn-sm" style="width: 120px">
+                        <span class="glyphicon glyphicon-save"></span> Save
+                    </button>
+                </div>
+
+                <br />
+            </div>
+
+            <div id="parameters_screen" hidden>
+                <h2 class="title">MODIFY HEADERS</h2>
+                <strong>Parameters:</strong>
+                <br /><br />
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="debug_mode" />
+                    <label class="form-check-label" for="debug_mode">Debug mode</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="show_comments" />
+                    <label class="form-check-label" for="show_comments">Show comments</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="use_url_contains" />
+                    <label class="form-check-label" for="use_url_contains">Filter URL per rules</label>
+                </div>
+                <br />
+                <a href="#" id="exit_parameters_screen_button" class="btn btn-secondary btn-sm" style="width: 100px">
+                    <span class="glyphicon glyphicon-step-backward"></span> Back
+                </a>
+            </div>
+
+            <iframe id="download" title="hidden_download_frame" width="0" height="0" style="border: none"></iframe>
+        </div>
+        <script src="common.js"></script>
+        <script src="regexps.js"></script>
+        <script src="config.js"></script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "description": "Modify headers ",
+  "manifest_version": 3,
+  "name": "modify-headers",
+  "version": "1.9.0",
+  "homepage_url": "https://github.com/shubhamk-27",
+  "icons": {
+    "48": "icons/modify-48.png"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "action": {
+    "default_icon": "icons/modify-32.png",
+    "default_title": "Modify Headers",
+    "default_popup": "popup/menu.html"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  }
+}
