@@ -32,7 +32,6 @@ function start_modify() {
                 chrome.runtime.sendMessage('on');
             }
             document.getElementById('start_stop').value = 'Stop';
-            // if exists reload config tab , to get the start/stop information correct
             chrome.tabs.query({currentWindow: true}, reloadConfigTab);
         });
     } else {
@@ -44,7 +43,6 @@ function start_modify() {
             }
             started = 'off';
             document.getElementById('start_stop').value = 'Start';
-            // if exists reload config tab , to get the start/stop information correct
             chrome.tabs.query({currentWindow: true}, reloadConfigTab);
         });
     }
@@ -52,11 +50,9 @@ function start_modify() {
 
 function reloadConfigTab(tabs) {
     var config_tab;
-    // search for config tab
     for (let tab of tabs) {
         if (tab.url.startsWith(chrome.runtime.getURL(''))) config_tab = tab;
     }
-    // config tab exists , reload it
     if (config_tab) chrome.tabs.reload(config_tab.id);
 }
 
@@ -66,12 +62,9 @@ function start_config() {
 
 function loadConfigTab(tabs) {
     var config_tab;
-    // search for config tab
     for (let tab of tabs) {
         if (tab.url.startsWith(chrome.runtime.getURL(''))) config_tab = tab;
     }
-    // config tab exits , put the focus on it
     if (config_tab) chrome.tabs.update(config_tab.id, {active: true});
-    // else create a new tab
     else chrome.tabs.create({url: '/popup/config.html'});
 }
